@@ -9,13 +9,24 @@ export default function Contact({ t }: { t: Translations }) {
   const ref2 = useScrollReveal()
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('loading')
-    setTimeout(() => {
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const res = await fetch('https://formspree.io/f/mojpoabg', {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' },
+    })
+    if (res.ok) {
       setStatus('success')
-      setTimeout(() => setStatus('idle'), 4000)
-    }, 1200)
+      form.reset()
+      setTimeout(() => setStatus('idle'), 5000)
+    } else {
+      setStatus('idle')
+      alert('Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -45,15 +56,15 @@ export default function Contact({ t }: { t: Translations }) {
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.group}>
               <label className={styles.formLabel}>{t.form_name}</label>
-              <input type="text" className={styles.input} required placeholder="John Doe" />
+              <input type="text" name="name" className={styles.input} required placeholder="John Doe" />
             </div>
             <div className={styles.group}>
               <label className={styles.formLabel}>{t.form_email}</label>
-              <input type="email" className={styles.input} required placeholder="john@example.com" />
+              <input type="email" name="email" className={styles.input} required placeholder="john@example.com" />
             </div>
             <div className={styles.group}>
               <label className={styles.formLabel}>{t.form_msg}</label>
-              <textarea className={styles.textarea} required placeholder="Tell me about your project..." />
+              <textarea name="message" className={styles.textarea} required placeholder="Tell me about your project..." />
             </div>
             <button type="submit" className={styles.submit} disabled={status === 'loading'}>
               {status === 'loading' ? '...' : status === 'success' ? '✓' : t.form_send}
