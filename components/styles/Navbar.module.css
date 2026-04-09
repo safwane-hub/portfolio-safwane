@@ -29,15 +29,35 @@
 }
 
 .links a {
-  color: var(--muted);
+  color: var(--text);
   text-decoration: none;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  padding-bottom: 3px;
 }
 
-.links a:hover { color: var(--text); }
+.links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  transition: width 0.3s ease;
+}
+
+.links a:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.links a:hover::after { width: 100%; }
 
 .langSwitcher {
   display: flex;
@@ -46,11 +66,12 @@
 
 .langBtn {
   background: none;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.3rem 0.6rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  padding: 0.35rem 0.7rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: none;
@@ -61,8 +82,9 @@
 .langBtn:hover,
 .langBtn.active {
   border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(124, 109, 250, 0.1);
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 12px rgba(124, 109, 250, 0.35);
 }
 
 .burger {
@@ -73,7 +95,8 @@
   gap: 5px;
   padding: 0.5rem;
   cursor: pointer;
-  z-index: 101;
+  z-index: 200;
+  position: relative;
 }
 
 .burgerLine {
@@ -95,28 +118,35 @@
 }
 
 @media (max-width: 768px) {
-  .nav { padding: 1rem 1.5rem; }
+  .nav {
+    padding: 1rem 1.5rem;
+    z-index: 150;
+    background: rgba(5, 5, 8, 0.98);
+  }
   .burger { display: flex; }
   .links {
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(5, 5, 8, 0.95);
+    background: rgba(5, 5, 8, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    z-index: 100;
+    gap: 2.5rem;
+    z-index: 149;
   }
   .linksOpen {
     display: flex;
   }
   .links a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: var(--text);
   }
   .langSwitcher {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.4rem;
   }
+  .langBtn { cursor: auto; }
 }

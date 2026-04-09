@@ -137,6 +137,6 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: 5rem 1.5rem; }
-  .grid { grid-template-columns: 1fr; gap: 3rem; }
+  .section { padding: 4rem 1.2rem; }
+  .grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }

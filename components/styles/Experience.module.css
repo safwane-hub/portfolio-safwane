@@ -5,15 +5,22 @@
 }
 
 .label {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradShift 4s ease infinite;
+  filter: brightness(1.2);
 }
 .label::before,
 .label::after {
@@ -21,7 +28,8 @@
   flex: 1;
   height: 1px;
   background: linear-gradient(to right, transparent, var(--accent));
-  max-width: 100px;
+  max-width: 80px;
+  opacity: 0.6;
 }
 .label::after {
   background: linear-gradient(to right, var(--accent), transparent);
@@ -37,15 +45,17 @@
 
 .timeline {
   position: relative;
-  max-width: 700px;
+  max-width: 680px;
   margin: 0 auto;
-  padding-left: 2rem;
+  padding-left: 3rem;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0.7rem;
+  bottom: 0;
   width: 1px;
   background: linear-gradient(to bottom, var(--accent), transparent);
 }
@@ -65,13 +75,13 @@
 
 .dot {
   position: absolute;
-  left: -2.4rem;
-  top: 0.3rem;
-  width: 10px;
-  height: 10px;
+  left: calc(-3rem - 4px);
+  top: 0.35rem;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--accent);
-  animation: pulse 2s ease infinite;
+  box-shadow: 0 0 6px var(--accent);
 }
 
 .period {
@@ -108,5 +118,7 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: 5rem 1.5rem; }
+  .section { padding: 4rem 1.2rem; }
+  .timeline { padding-left: 2rem; }
+  .dot { left: calc(-2rem - 4px); top: 0.35rem; }
 }

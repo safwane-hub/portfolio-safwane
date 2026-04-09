@@ -253,9 +253,21 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .hero { padding: 5rem 1.5rem 5rem; }
-  .badge { gap: 0.5rem; padding: 0.5rem 1.2rem; flex-wrap: wrap; justify-content: center; }
-  .badgeRole { font-size: 0.7rem; }
+  .hero { padding: 6rem 1.2rem 4rem; }
+  .content { width: 100%; }
+  .badge {
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  .badgeRole { font-size: 0.65rem; }
+  .badgeSep { display: none; }
   .badgeLocation { font-size: 0.65rem; }
+  .subtitle { font-size: 0.85rem; }
+  .btnPrimary, .btnSecondary { font-size: 0.72rem; padding: 0.7rem 1.4rem; cursor: auto; }
   .scrollArrow { width: 40px; height: 40px; }
+  .scrollLabel { font-size: 0.72rem; }
 }

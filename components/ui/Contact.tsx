@@ -54,6 +54,7 @@ export default function Contact({ t }: { t: Translations }) {
 
         <div ref={ref2} className="reveal">
           <form className={styles.form} onSubmit={handleSubmit}>
+            <input type="hidden" name="_subject" value="New message from your portfolio" />
             <div className={styles.group}>
               <label className={styles.formLabel}>{t.form_name}</label>
               <input type="text" name="name" className={styles.input} required placeholder="John Doe" />

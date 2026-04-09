@@ -11,8 +11,9 @@ const skillsList = (t: Translations) => [
   { icon: '☁️', name: 'AWS (Serverless, Lambda)', level: t.sk_inter },
   { icon: '🐳', name: 'Docker / DevOps / CI-CD', level: t.sk_inter },
   { icon: '⚛️', name: 'React / React Native', level: t.sk_inter },
-  { icon: '🤖', name: 'AI / Prompt Engineering', level: t.sk_adv },
+  { icon: '✨', name: 'AI / Prompt Engineering', level: t.sk_adv },
   { icon: '🔗', name: 'REST APIs / Integration', level: t.sk_adv },
+  { icon: '🤖', name: 'Automation / Agentic AI', level: t.sk_adv },
 ]
 
 export default function Skills({ t }: { t: Translations }) {
