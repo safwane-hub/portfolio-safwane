@@ -117,24 +117,53 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+.mobileLang {
+  display: none;
+}
+
+.langSwitcherInline {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .nav {
     padding: 1rem 1.5rem;
-    z-index: 150;
-    background: rgba(5, 5, 8, 0.98);
+    z-index: 1000;
+    background: rgb(5, 5, 8);
+    position: fixed;
+    justify-content: space-between;
   }
-  .burger { display: flex; }
+  .burger {
+    display: flex;
+    z-index: 1100;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+  }
+  .langSwitcher {
+    display: none;
+  }
+  .mobileLang {
+    display: block;
+  }
   .links {
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(5, 5, 8, 0.98);
-    backdrop-filter: blur(20px);
+    width: 100vw;
+    height: 100vh;
+    background: rgb(5, 5, 8);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2.5rem;
-    z-index: 149;
+    z-index: 1050;
+    padding-top: 4rem;
   }
   .linksOpen {
     display: flex;
@@ -142,11 +171,6 @@
   .links a {
     font-size: 1.2rem;
     color: var(--text);
-  }
-  .langSwitcher {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4rem;
   }
   .langBtn { cursor: auto; }
 }
