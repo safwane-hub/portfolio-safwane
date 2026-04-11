@@ -59,6 +59,15 @@
 }
 .links a:hover::after { width: 100%; }
 
+.activeLink {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.activeLink::after {
+  width: 100% !important;
+}
+
 .langSwitcher {
   display: flex;
   gap: 0.5rem;
@@ -103,18 +112,47 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
   transition: all 0.3s;
+}
+
+.burgerLine:nth-child(2) {
+  width: 16px;
+}
+
+.burger:hover .burgerLine {
+  background: linear-gradient(90deg, var(--accent2), var(--accent3));
+  box-shadow: 0 0 6px rgba(124, 109, 250, 0.5);
 }
 
 .burgerOpen:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
+  background: linear-gradient(90deg, #e040fb, #ff1744);
 }
 .burgerOpen:nth-child(2) {
   opacity: 0;
 }
 .burgerOpen:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
+  width: 22px;
+  background: linear-gradient(90deg, #ff1744, #e040fb);
+}
+
+.mobileStatus {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.flagIcon {
+  font-size: 1rem;
+  filter: grayscale(0.4) brightness(0.9);
+  transition: all 0.3s;
+}
+
+.mobileStatus:hover .flagIcon {
+  filter: grayscale(0) brightness(1);
 }
 
 .mobileLang {
@@ -148,6 +186,10 @@
   .langSwitcher {
     display: none;
   }
+  .mobileStatus {
+    display: flex;
+    z-index: 1100;
+  }
   .mobileLang {
     display: block;
   }
@@ -163,10 +205,28 @@
     justify-content: center;
     gap: 2.5rem;
     z-index: 1050;
-    padding-top: 4rem;
+    padding-bottom: 5rem;
   }
   .linksOpen {
     display: flex;
+  }
+  .navOpen::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7c6dfa, #e040fb, #ff1744, #00e5ff, #ffea00, #ff4081, #ff1744, #7c6dfa);
+    background-size: 400% 100%;
+    box-shadow: 0 0 12px rgba(224, 64, 251, 0.6), 0 0 24px rgba(0, 229, 255, 0.4);
+    z-index: 1200;
+    animation: neonSlide 6s linear infinite;
+  }
+
+  @keyframes neonSlide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 400% 0%; }
   }
   .links a {
     font-size: 1.2rem;
